@@ -5,15 +5,15 @@
 # Site
 title: Lite Blog
 subtitle: 'Coding'
-description: 'My private blog, share Unity3D,C#,Game information'
-keywords:
+description: 'I love three things in the world, sun, moon, and you, sun for morning, moon for night, and you forever.'
+keywords: code, c#, unity3d, game
 author: UnSkyToo
-language: zh-CN
+language: en
 timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://blog.unskytoo.top
+url: http://unskytoo.top
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -98,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
