@@ -1,7 +1,45 @@
-<html>
-    <title>Website List</title>
-    <head></head>
-    <body>
-        <a href="https://vip.yeyulingfeng.com" target="_blank">Vip视频解析</a>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航页</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>我的导航页</h1>
+    </header>
+    <main>
+        <section class="search">
+            <input type="text" id="search" placeholder="搜索链接...">
+        </section>
+        <section class="category">
+            <h2 class="accordion">视频</h2>
+            <div class="panel">
+                <ul>
+                    <li><a href="https://www.youtube.com" target="_blank" class="video">YouTube</a></li>
+                    <li><a href="https://www.vimeo.com" target="_blank" class="video">Vimeo</a></li>
+                    <li><a href="https://vip.yeyulingfeng.com" target="_blank" class="video">Vip视频解析</a></li>
+                    <!-- 添加更多视频链接 -->
+                </ul>
+            </div>
+        </section>
+        <section class="category">
+            <h2 class="accordion">新闻</h2>
+            <div class="panel">
+                <ul>
+                    <li><a href="https://www.bbc.com" target="_blank" class="news">BBC News</a></li>
+                    <li><a href="https://www.cnn.com" target="_blank" class="news">CNN</a></li>
+                    <!-- 添加更多新闻链接 -->
+                </ul>
+            </div>
+        </section>
+        <!-- 添加更多分类 -->
+    </main>
+    <footer>
+        <p>&copy; 2024 我的导航页</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
 </html>
