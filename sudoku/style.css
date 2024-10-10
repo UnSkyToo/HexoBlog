@@ -1,0 +1,181 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px 10px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.game-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#sudoku-board {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-gap: 1px;
+    background-color: #333;
+    border: 2px solid #333;
+    margin-bottom: 10px;
+}
+
+.cell {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+}
+
+.cell.selected {
+    background-color: #e3f2fd;
+}
+
+.cell-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cell-content.original {
+    color: #000;
+}
+
+.cell-content.player-input {
+    color: #1a73e8;
+}
+
+.hint-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    height: 100%;
+}
+
+.hint-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    color: #666;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.controls button {
+    width: 48%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.controls button:active {
+    background-color: #45a049;
+}
+
+.input-area {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#number-pad, #hint-pad {
+    width: 48%;
+    position: relative;
+}
+
+#number-pad::before,
+#hint-pad::before {
+    content: "数字输入";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+#hint-pad::before {
+    content: "提示输入";
+}
+
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+}
+
+.number-cell {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.number-cell:active {
+    background-color: #bdbdbd;
+}
+
+.number-cell.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 添加一个标题来区分数字输入和提示输入 */
+.input-area::before,
+.input-area::after {
+    content: "数字输入";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.input-area::after {
+    content: "提示输入";
+    left: 52%; /* 稍微超过半宽，以对齐右侧的输入区 */
+}
+
+#hint-pad .number-grid {
+    margin-bottom: 0;
+}
