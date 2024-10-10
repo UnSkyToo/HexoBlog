@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -12,8 +17,27 @@ body {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
-    padding: 20px 10px 80px; /* 增加底部内边距 */
+    padding: 20px 10px 60px; /* 增加底部内边距 */
     box-sizing: border-box;
+}
+
+.safe-area-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.scrollable-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    padding: 20px 10px;
 }
 
 .container {
@@ -22,7 +46,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px; /* 减少间距 */
     padding-bottom: env(safe-area-inset-bottom); /* 适应 iOS 底部安全区域 */
 }
 
@@ -40,7 +64,7 @@ body {
     grid-gap: 1px;
     background-color: #333;
     border: 2px solid #333;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .cell {
@@ -91,13 +115,14 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 20px; /* 增加底部边距 */
+    margin-top: 10px; /* 增加顶部边距 */
+    margin-bottom: 40px; /* 增加底部边距 */
 }
 
 .controls button {
     width: 48%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 12px 10px; /* 增加按钮高度 */
+    font-size: 16px; /* 增加字体大小 */
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -191,4 +216,33 @@ body {
     html {
         height: -webkit-fill-available;
     }
+}
+
+@media (max-height: 700px) {
+    .game-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    #sudoku-board {
+        margin-bottom: 10px;
+    }
+    
+    .controls {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+.cell.related {
+    background-color: #f0f0f0;
+}
+
+.cell.selected {
+    background-color: #e3f2fd;
+}
+
+/* 确保选中的格子样式优先于相关格子样式 */
+.cell.related.selected {
+    background-color: #e3f2fd;
 }

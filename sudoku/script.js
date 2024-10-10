@@ -123,33 +123,25 @@ function selectCell(cell) {
         selectedCell.classList.remove('selected');
     }
     selectedCell = cell;
-    isOriginalCell = cell.classList.contains('original');
     cell.classList.add('selected');
-    highlightRelatedCells(cell);
+    isOriginalCell = cell.classList.contains('original');
+    highlightRelatedCells(cell); // 添加这行
     updateNumberPadState();
-    saveGameState(); // 添加这行以保存状态
 }
 
 function highlightRelatedCells(cell) {
-    // 移除所有之前的高亮
-    document.querySelectorAll('.cell').forEach(c => {
-        c.classList.remove('selected', 'related', 'same-number');
-    });
+    // 移除之前的高亮
+    document.querySelectorAll('.cell').forEach(c => c.classList.remove('related'));
 
-    // 高亮选中的格子
-    cell.classList.add('selected');
+    if (!cell) return;
 
     const row = cell.dataset.row;
     const col = cell.dataset.col;
     const block = cell.dataset.block;
-    const number = cell.querySelector('.cell-content').textContent;
 
     document.querySelectorAll('.cell').forEach(c => {
         if (c.dataset.row === row || c.dataset.col === col || c.dataset.block === block) {
             c.classList.add('related');
-        }
-        if (number && c.querySelector('.cell-content').textContent === number && c !== cell) {
-            c.classList.add('same-number');
         }
     });
 }
