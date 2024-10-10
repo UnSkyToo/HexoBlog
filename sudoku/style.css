@@ -6,7 +6,7 @@
 
 html, body {
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 body {
@@ -15,45 +15,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    padding: 20px 10px 60px; /* 增加底部内边距 */
-    box-sizing: border-box;
+    padding: 10px 10px 70px; /* 减少顶部内边距，增加底部内边距 */
 }
 
-.safe-area-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-}
-
-.scrollable-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100%;
-    padding: 20px 10px;
-}
-
-.container {
+.game-container {
     width: 100%;
     max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* 减少间距 */
-    padding-bottom: env(safe-area-inset-bottom); /* 适应 iOS 底部安全区域 */
+    gap: 10px; /* 减少元素之间的间距 */
 }
 
 .game-title {
-    font-size: 24px;
+    font-size: 22px; /* 稍微减小标题大小 */
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* 减少标题下方的间距 */
 }
 
 #sudoku-board {
@@ -64,7 +41,6 @@ body {
     grid-gap: 1px;
     background-color: #333;
     border: 2px solid #333;
-    margin-bottom: 20px;
 }
 
 .cell {
@@ -78,6 +54,14 @@ body {
 }
 
 .cell.selected {
+    background-color: #e3f2fd;
+}
+
+.cell.related {
+    background-color: #f0f0f0;
+}
+
+.cell.related.selected {
     background-color: #e3f2fd;
 }
 
@@ -111,34 +95,11 @@ body {
     color: #666;
 }
 
-.controls {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 10px; /* 增加顶部边距 */
-    margin-bottom: 40px; /* 增加底部边距 */
-}
-
-.controls button {
-    width: 48%;
-    padding: 12px 10px; /* 增加按钮高度 */
-    font-size: 16px; /* 增加字体大小 */
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.controls button:active {
-    background-color: #45a049;
-}
-
 .input-area {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 10px; /* 减少顶部边距 */
 }
 
 #number-pad, #hint-pad {
@@ -150,9 +111,9 @@ body {
 #hint-pad::before {
     content: "数字输入";
     position: absolute;
-    top: -20px;
+    top: -18px; /* 稍微上移标签 */
     left: 0;
-    font-size: 14px;
+    font-size: 13px; /* 稍微减小字体大小 */
     color: #666;
 }
 
@@ -187,62 +148,44 @@ body {
     cursor: not-allowed;
 }
 
-/* 添加一个标题来区分数字输入和提示输入 */
-.input-area::before,
-.input-area::after {
-    content: "数字输入";
-    position: absolute;
-    top: -20px;
-    left: 0;
-    font-size: 14px;
-    color: #666;
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px; /* 减少顶部边距 */
 }
 
-.input-area::after {
-    content: "提示输入";
-    left: 52%; /* 稍微超过半宽，以对齐右侧的输入区 */
+.controls button {
+    width: 48%;
+    padding: 10px 8px; /* 稍微减小按钮大小 */
+    font-size: 15px; /* 稍微减小字体大小 */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-#hint-pad .number-grid {
-    margin-bottom: 0;
-}
-
-/* 添加以下新样式 */
-@supports (-webkit-touch-callout: none) {
-    /* iOS 设备特定样式 */
-    body {
-        height: -webkit-fill-available;
-    }
-    html {
-        height: -webkit-fill-available;
-    }
+.controls button:active {
+    background-color: #45a049;
 }
 
 @media (max-height: 700px) {
+    body {
+        padding-top: 5px; /* 在小屏幕上进一步减少顶部内边距 */
+        padding-bottom: 80px; /* 在小屏幕上增加更多底部内边距 */
+    }
+
     .game-title {
         font-size: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 3px;
     }
-    
-    #sudoku-board {
-        margin-bottom: 10px;
+
+    .input-area {
+        margin-top: 8px;
     }
-    
+
     .controls {
-        margin-top: 10px;
-        margin-bottom: 20px;
+        margin-top: 12px;
     }
-}
-
-.cell.related {
-    background-color: #f0f0f0;
-}
-
-.cell.selected {
-    background-color: #e3f2fd;
-}
-
-/* 确保选中的格子样式优先于相关格子样式 */
-.cell.related.selected {
-    background-color: #e3f2fd;
 }
