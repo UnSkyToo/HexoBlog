@@ -119,13 +119,30 @@ function renderBoard(board) {
 }
 
 function selectCell(cell) {
+    // 移除之前选中格子的高亮
     if (selectedCell) {
         selectedCell.classList.remove('selected');
     }
+    
+    // 移除所有相关格子的高亮
+    document.querySelectorAll('.cell').forEach(c => c.classList.remove('related'));
+    
+    // 设置新的选中格子
     selectedCell = cell;
     cell.classList.add('selected');
+    
+    // 高亮相关格子
+    const row = cell.dataset.row;
+    const col = cell.dataset.col;
+    const block = cell.dataset.block;
+    
+    document.querySelectorAll('.cell').forEach(c => {
+        if (c.dataset.row === row || c.dataset.col === col || c.dataset.block === block) {
+            c.classList.add('related');
+        }
+    });
+
     isOriginalCell = cell.classList.contains('original');
-    highlightRelatedCells(cell); // 添加这行
     updateNumberPadState();
 }
 
@@ -140,7 +157,7 @@ function highlightRelatedCells(cell) {
     const block = cell.dataset.block;
 
     document.querySelectorAll('.cell').forEach(c => {
-        if (c.dataset.row === row || c.dataset.col === col || c.dataset.block === block) {
+        if (c.dataset.row == row || c.dataset.col == col || c.dataset.block == block) {
             c.classList.add('related');
         }
     });

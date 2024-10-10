@@ -6,7 +6,7 @@
 
 html, body {
     height: 100%;
-    overflow: auto;
+    width: 100%;
 }
 
 body {
@@ -15,7 +15,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 10px 70px; /* 减少顶部内边距，增加底部内边距 */
+    padding: 10px;
+    overflow-y: auto;
 }
 
 .game-container {
@@ -24,13 +25,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* 减少元素之间的间距 */
+    gap: 15px;
 }
 
 .game-title {
-    font-size: 22px; /* 稍微减小标题大小 */
+    font-size: 24px;
     color: #333;
-    margin-bottom: 5px; /* 减少标题下方的间距 */
+    text-align: center;
 }
 
 #sudoku-board {
@@ -54,15 +55,15 @@ body {
 }
 
 .cell.selected {
-    background-color: #e3f2fd;
+    background-color: #e3f2fd; /* 选中格子的背景色 */
 }
 
 .cell.related {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* 相关格子的背景色 */
 }
 
 .cell.related.selected {
-    background-color: #e3f2fd;
+    background-color: #e3f2fd; /* 确保选中的格子颜色优先 */
 }
 
 .cell-content {
@@ -99,26 +100,10 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 10px; /* 减少顶部边距 */
 }
 
 #number-pad, #hint-pad {
     width: 48%;
-    position: relative;
-}
-
-#number-pad::before,
-#hint-pad::before {
-    content: "数字输入";
-    position: absolute;
-    top: -18px; /* 稍微上移标签 */
-    left: 0;
-    font-size: 13px; /* 稍微减小字体大小 */
-    color: #666;
-}
-
-#hint-pad::before {
-    content: "提示输入";
 }
 
 .number-grid {
@@ -132,7 +117,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 20px;
     background-color: #e0e0e0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -152,13 +137,12 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 15px; /* 减少顶部边距 */
 }
 
 .controls button {
     width: 48%;
-    padding: 10px 8px; /* 稍微减小按钮大小 */
-    font-size: 15px; /* 稍微减小字体大小 */
+    padding: 10px;
+    font-size: 16px;
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -170,22 +154,12 @@ body {
     background-color: #45a049;
 }
 
-@media (max-height: 700px) {
-    body {
-        padding-top: 5px; /* 在小屏幕上进一步减少顶部内边距 */
-        padding-bottom: 80px; /* 在小屏幕上增加更多底部内边距 */
-    }
-
+@media (max-height: 600px) {
     .game-title {
         font-size: 20px;
-        margin-bottom: 3px;
     }
-
-    .input-area {
-        margin-top: 8px;
-    }
-
-    .controls {
-        margin-top: 12px;
+    
+    .game-container {
+        gap: 10px;
     }
 }
