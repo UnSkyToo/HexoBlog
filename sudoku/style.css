@@ -12,7 +12,8 @@ body {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
-    padding: 20px 10px;
+    padding: 20px 10px 80px; /* 增加底部内边距 */
+    box-sizing: border-box;
 }
 
 .container {
@@ -22,6 +23,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    padding-bottom: env(safe-area-inset-bottom); /* 适应 iOS 底部安全区域 */
 }
 
 .game-title {
@@ -89,7 +91,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* 增加底部边距 */
 }
 
 .controls button {
@@ -178,4 +180,15 @@ body {
 
 #hint-pad .number-grid {
     margin-bottom: 0;
+}
+
+/* 添加以下新样式 */
+@supports (-webkit-touch-callout: none) {
+    /* iOS 设备特定样式 */
+    body {
+        height: -webkit-fill-available;
+    }
+    html {
+        height: -webkit-fill-available;
+    }
 }
